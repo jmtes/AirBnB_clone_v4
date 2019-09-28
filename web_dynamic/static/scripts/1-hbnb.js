@@ -1,3 +1,5 @@
+$('input').css('width', '10px');
+
 $(function() {
 	let amenities = [];
 	$('input:checkbox').change(
@@ -11,16 +13,18 @@ $(function() {
 			}
 		}
 		console.log(amenities);
-		$('div.amenities h4').text('\xA0');
-		let amenityString = '';
-		amenities.forEach(function(item, index) {
-			console.log(item);
-			if (index !== 0) {
-				amenityString += ', ';
-			}
-			amenityString += item;
-		});
-		$('div.amenities h4').text(amenityString);
-		//console.log(amenityString);
+		if (amenities.length === 0) {
+			$('div.amenities h4').html('&nbsp;');
+		} else {
+			// $('div.amenities h4').text('\xA0');
+			let amenityString = '';
+			amenities.forEach(function(item, index) {
+				if (index !== 0) {
+					amenityString += ', ';
+				}
+				amenityString += item;
+			});
+			$('div.amenities h4').text(amenityString);
+		}
 	});
 });
