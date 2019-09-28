@@ -1,12 +1,3 @@
-const $apiStatus = $.get('http://0.0.0.0:5001/api/v1/status/');
-$apitStatus.done(function(data){
-  if (data.status === 'OK') {
-    $('DIV#api_status').addClass('available');
-  } else {
-    $('DIV#api_status').removeClass('available');
-  }
-});
-
 $(function() {
 	let amenities = [];
 	$('input:checkbox').change(
@@ -33,4 +24,12 @@ $(function() {
 			$('div.amenities h4').text(amenityString);
 		}
 	});
+	const $apiStatus = $.get('http://0.0.0.0:5001/api/v1/status/');
+	$apitStatus.done(function(data){
+  	if (data.status === 'OK') {
+    	$('DIV#api_status').addClass('available');
+  	} else {
+    	$('DIV#api_status').removeClass('available');
+  	}
+});
 });
