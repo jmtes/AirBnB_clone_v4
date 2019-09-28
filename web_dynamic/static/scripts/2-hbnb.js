@@ -10,7 +10,6 @@ $(function() {
 				amenities.splice(index, 1);
 			}
 		}
-		console.log(amenities);
 		if (amenities.length === 0) {
 			$('div.amenities h4').html('&nbsp;');
 		} else {
@@ -25,11 +24,14 @@ $(function() {
 		}
 	});
 	const $apiStatus = $.get('http://0.0.0.0:5001/api/v1/status/');
+	console.log($apiStatus);
 	$apiStatus.done(function(data){
+		console.log(data);
   	  if (data.status === 'OK') {
-    	    $('DIV#api_status').addClass('available');
+		  console.log('im ok');
+			$('div#api_status').addClass('available');
   	  } else {
-    	    $('DIV#api_status').removeClass('available');
+			$('div#api_status').removeClass('available');
   	}
   });
 });
