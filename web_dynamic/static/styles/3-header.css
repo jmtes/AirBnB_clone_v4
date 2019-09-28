@@ -18,11 +18,12 @@ header {
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    top: 50%;
-    border-right: 30px;
+    top: 20%;
+    right: 30px;
     background-color: #cccccc;
+	position: relative;
 }
 
-.available {
+#api_status.available {
     background-color: #ff545f;
 }
