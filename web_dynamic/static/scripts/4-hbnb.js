@@ -43,58 +43,58 @@ $(function () {
             placeOwner = data.first_name + ' ' + data.last_name;
             $('section.places').append(`<article>
 
-	    <div class="title">
+            <div class="title">
 
-	      <h2>${place.name}</h2>
+              <h2>${place.name}</h2>
 
-	      <div class="price_by_night">
+            <div class="price_by_night">
 
-		${place.price_by_night}
+               ${place.price_by_night}
 
-	      </div>
-	    </div>
-	    <div class="information">
-	      <div class="max_guest">
-		<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+            </div>
+            </div>
+            <div class="information">
+            <div class="max_guest">
+              <i class="fa fa-users fa-3x" aria-hidden="true"></i>
 
-		<br />
+                <br />
 
-		${place.max_guest} Guests
+                ${place.max_guest} Guests
 
-	      </div>
-	      <div class="number_rooms">
-		<i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+              </div>
+              <div class="number_rooms">
+                <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
 
-		<br />
+                <br />
 
-		${place.number_rooms} Bedrooms
-	      </div>
-	      <div class="number_bathrooms">
-		<i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                ${place.number_rooms} Bedrooms
+              </div>
+              <div class="number_bathrooms">
+                <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
 
-		<br />
+                 <br />
 
-		${place.number_bathrooms} Bathroom
+                 ${place.number_bathrooms} Bathroom
 
-	      </div>
-	    </div>
+              </div>
+             </div>
 
-	    <!-- **********************
-		 USER
-		 **********************  -->
+             <!-- **********************
+                  USER
+              **********************  -->
 
-	    <div class="user">
+            <div class="user">
 
-	      <strong>Owner: ${placeOwner}</strong>
+              <strong>Owner: ${placeOwner}</strong>
 
-	    </div>
-	    <div class="description">
+            </div>
+            <div class="description">
 
-	      ${place.description}
+             ${place.description}
 
-	    </div>
+            </div>
 
-	  </article>`
+          </article>`
             );
           });
         }
@@ -103,12 +103,12 @@ $(function () {
     });
   const $apiStatus = $.get('http://0.0.0.0:5001/api/v1/status/');
   $apiStatus.done(function (data) {
-  	  if (data.status === 'OK') {
+    if (data.status === 'OK') {
       $('div#api_status').addClass('available');
-  	  } else {
+    } else {
       $('div#api_status').removeClass('available');
-  	  }
-  	});
+    }
+  });
   const getPlace = $.ajax({
     type: 'POST',
     url: 'http://0.0.0.0:5001/api/v1/places_search/',
@@ -123,58 +123,58 @@ $(function () {
         placeOwner = data.first_name + ' ' + data.last_name;
         $('section.places').append(`<article>
 
-	    <div class="title">
+           <div class="title">
 
-	      <h2>${place.name}</h2>
+             <h2>${place.name}</h2>
 
-	      <div class="price_by_night">
+              <div class="price_by_night">
 
-		${place.price_by_night}
+               ${place.price_by_night}
 
-	      </div>
-	    </div>
-	    <div class="information">
-	      <div class="max_guest">
-		<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+             </div>
+            </div>
+             <div class="information">
+              <div class="max_guest">
+                <i class="fa fa-users fa-3x" aria-hidden="true"></i>
 
-		<br />
+                <br />
 
-		${place.max_guest} Guests
+                ${place.max_guest} Guests
 
-	      </div>
-	      <div class="number_rooms">
-		<i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+              </div>
+              <div class="number_rooms">
+                <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
 
-		<br />
+                <br />
 
-		${place.number_rooms} Bedrooms
-	      </div>
-	      <div class="number_bathrooms">
-		<i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                ${place.number_rooms} Bedrooms
+               </div>
+              <div class="number_bathrooms">
+                <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
 
-		<br />
+                <br />
 
-		${place.number_bathrooms} Bathroom
+                ${place.number_bathrooms} Bathroom
 
-	      </div>
-	    </div>
+             </div>
+            </div>
 
-	    <!-- **********************
-		 USER
-		 **********************  -->
+            <!-- **********************
+                 USER
+             **********************  -->
 
-	    <div class="user">
+            <div class="user">
 
-	      <strong>Owner: ${placeOwner}</strong>
+              <strong>Owner: ${placeOwner}</strong>
 
-	    </div>
-	    <div class="description">
+             </div>
+            <div class="description">
 
-	      ${place.description}
+              ${place.description}
 
-	    </div>
+             </div>
 
-	  </article>`
+            </article>`
         );
       });
     });
