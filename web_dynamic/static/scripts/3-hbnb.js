@@ -1,49 +1,49 @@
-$(function() {
-	let amenities = [];
-	$('input:checkbox').change(
-	function(){
-		if ($(this).is(':checked')) {
-			amenities.push($(this).data('name'));
-		} else {
-			let index = amenities.indexOf($(this).data('name'));
-			if (index > -1) {
-				amenities.splice(index, 1);
-			}
-		}
-		if (amenities.length === 0) {
-			$('div.amenities h4').html('&nbsp;');
-		} else {
-			let amenityString = '';
-			amenities.forEach(function(item, index) {
-				if (index !== 0) {
-					amenityString += ', ';
-				}
-				amenityString += item;
-			});
-			$('div.amenities h4').text(amenityString);
-		}
-	});
-	const $apiStatus = $.get('http://0.0.0.0:5001/api/v1/status/');
-	$apiStatus.done(function(data){
+$(function () {
+  const amenities = [];
+  $('input:checkbox').change(
+    function () {
+      if ($(this).is(':checked')) {
+        amenities.push($(this).data('name'));
+      } else {
+        const index = amenities.indexOf($(this).data('name'));
+        if (index > -1) {
+          amenities.splice(index, 1);
+        }
+      }
+      if (amenities.length === 0) {
+        $('div.amenities h4').html('&nbsp;');
+      } else {
+        let amenityString = '';
+        amenities.forEach(function (item, index) {
+          if (index !== 0) {
+            amenityString += ', ';
+          }
+          amenityString += item;
+        });
+        $('div.amenities h4').text(amenityString);
+      }
+    });
+  const $apiStatus = $.get('http://0.0.0.0:5001/api/v1/status/');
+  $apiStatus.done(function (data) {
   	  if (data.status === 'OK') {
-			$('div#api_status').addClass('available');
+      $('div#api_status').addClass('available');
   	  } else {
-			$('div#api_status').removeClass('available');
+      $('div#api_status').removeClass('available');
   	  }
   	});
-        const getPlace = $.ajax({
-			type: 'POST',
-			url: 'http://0.0.0.0:5001/api/v1/places_search/',
-			data: JSON.stringify({}),
-			contentType: 'application/json'
-		});
-	let placeOwner = '';
-	getPlace.done(function(data){
-		data.forEach(function(place) {
-			const getUser = $.get('http://0.0.0.0:5001/api/v1/users/' + place.user_id);
-			getUser.done(function(data) {
-				placeOwner = data.first_name + ' ' + data.last_name;
-			$('section.places').append(`<article>
+  const getPlace = $.ajax({
+    type: 'POST',
+    url: 'http://0.0.0.0:5001/api/v1/places_search/',
+    data: JSON.stringify({}),
+    contentType: 'application/json'
+  });
+  let placeOwner = '';
+  getPlace.done(function (data) {
+    data.forEach(function (place) {
+      const getUser = $.get('http://0.0.0.0:5001/api/v1/users/' + place.user_id);
+      getUser.done(function (data) {
+        placeOwner = data.first_name + ' ' + data.last_name;
+        $('section.places').append(`<article>
 
 	    <div class="title">
 
@@ -97,7 +97,8 @@ $(function() {
 	    </div>
 
 	  </article>`
-			)});
-		});
-	});
+        );
+      });
+    });
+  });
 });
